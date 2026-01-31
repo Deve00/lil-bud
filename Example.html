@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Product Co.</title>
+    <style>
+        :root {
+            --sage: #8da18d;
+            --cream: #fdfaf5;
+            --earth: #4a4238;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--cream);
+            color: var(--earth);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--white);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 1rem;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--earth);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover { color: var(--sage); }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        section { margin-bottom: 4rem; }
+
+        h2 { border-bottom: 2px solid var(--sage); display: inline-block; padding-bottom: 5px; }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .btn {
+            background: var(--sage);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            background: var(--white);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .step-number {
+            background: var(--sage);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .product-image {
+        width: 300px;          /* Sets a specific width */
+        border-radius: 15px;   /* Softens the edges for that natural look */
+        box-shadow: 2px 4px 10px rgba(0,0,0,0.1); /* Adds a soft depth */
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>LIL BUD</h1>
+    <p>Bringing deeper connection.</p>
+</header>
+
+<nav>
+    <a href="#store">Store</a>
+    <a href="#setup">Setup Guide</a>
+    <a href="#library">Plant Library</a>
+    <a href="#about">About Us</a>
+</nav>
+
+<div class="container">
+    
+    <section id="store">
+        <h2>The Store</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="1.png" alt="Starter Kit" class="product-image">
+                <h3>The Starter Kit x2 Pots</h3>
+                <p>$80.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="1.png" alt="Starter Kit" class="product-image">
+                <h3>Family Package x5 Pots</h3>
+                <p>$150.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="setup">
+        <h2>Setup Guide</h2>
+        <div class="step">
+            <div class="step-number">1</div>
+            <div>
+                <strong>Unbox:</strong> Carefully remove your plant and pot from the eco-friendly packaging.
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div>
+                <strong>Position:</strong> Place in a spot with indirect sunlight, away from drafty windows.
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div>
+                <strong>Hydrate:</strong> Add 200ml of water to the base reservoir.
+            </div>
+        </div>
+    </section>
+
+    <section id="library">
+        <h2>Plant Matchmaker</h2>
+        <div class="quiz-container" style="background: var(--white); padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <div class="grid">
+                <div>
+                    <label>Watering Schedule</label><br>
+                    <select id="waterPref">
+                        <option value="Low">Low (Monthly-ish)</option>
+                        <option value="Med">Medium (Weekly-ish)</option>
+                        <option value="High">High (Almost Daily)</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Light Levels</label><br>
+                    <select id="lightPref">
+                        <option value="Low">Low Light</option>
+                        <option value="Med">Medium / Indirect</option>
+                        <option value="Bright">Bright / Full Sun</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Safety</label><br>
+                    <select id="petPref">
+                        <option value="All">Show All Plants</option>
+                        <option value="Non-Toxic">Safe for Pets</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn" onclick="findPlants()" style="width: 100%; margin-top: 20px; padding: 15px;">Find My Match</button>
+        </div>
+
+        <div class="grid" id="library-grid">
+            </div>
+</section>
+
+    <section id="about">
+        <h2>Our Story</h2>
+        <p>Founded in 2024, Oak & Leaf was born out of a desire to simplify indoor gardening. We believe that everyone should have access to the calming influence of nature, regardless of how much space (or free time) they have.</p>
+        <p><strong>Our Mission:</strong> Sustainable products, easy care, and happier homes.</p>
+    </section>
+
+</div>
+
+<footer style="text-align: center; padding: 2rem; font-size: 0.8rem; opacity: 0.6;">
+    &copy; 2026 Lil Bud Co. All rights reserved.
+</footer>
+
+<script>
+    async function findPlants() {
+    const water = document.getElementById('waterPref').value;
+    const light = document.getElementById('lightPref').value;
+    const pet = document.getElementById('petPref').value;
+    const grid = document.getElementById('library-grid');
+
+        try {
+            const response = await fetch('plants.csv');
+            const data = await response.text();
+            const rows = data.split('\n').slice(1); // Skip header
+
+            const matches = rows.map(row => {
+                const cols = row.split(',');
+                return {
+                    name: cols[0],
+                    water: cols[1],
+                    durability: cols[2],
+                    light: cols[3],
+                    toxicity: cols[4],
+                    edible: cols[5],
+                    photo: cols[6]
+                };
+            }).filter(p => {
+                // Check if the plant's data contains our selected keywords
+                const waterMatch = p.water.includes(water);
+                const lightMatch = p.light.includes(light);
+                const petMatch = (pet === 'Non-Toxic') ? p.toxicity.includes('Non-Toxic') : true;
+
+                return waterMatch && lightMatch && petMatch;
+            });
+
+            displayResults(matches);
+        } catch (error) {
+            console.error("Error loading CSV:", error);
+        }
+    }
+
+    function displayResults(matches) {
+        const grid = document.getElementById('library-grid');
+        if (matches.length === 0) {
+            grid.innerHTML = "<p>No exact matches. Try being less picky with the light or water!</p>";
+            return;
+        }
+
+        grid.innerHTML = matches.map(p => `
+            <div class="card">
+                <h4>${p.name}</h4>
+                <p style="font-size: 0.8rem; color: var(--sage);">
+                    ${p.toxicity.includes('Non-Toxic') ? '🐾 Pet Friendly' : '⚠️ Toxic to Pets'}
+                </p>
+                <p><strong>Durability:</strong> ${p.durability}</p>
+                <small>${p.light}</small>
+            </div>
+        `).join('');
+    }
+</script>
+</body>
+</html>
